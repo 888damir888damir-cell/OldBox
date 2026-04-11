@@ -3,173 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLD BOX - SYSTEM READY</title>
-    <link rel="icon" href="https://img.icons8.com/color/48/alien.png" type="image/png">
+    <title>👾 OLD BOX - Retro Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000;
-            color: #00ffcc;
+        body { 
             font-family: 'Press Start 2P', cursive;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            margin: 0;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            color: #ff00ff;
-            text-shadow: 3px 3px #550055;
-            margin-bottom: 10px;
-        }
-
-        .status-bar {
-            font-size: 10px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* Кнопки выбора ОС */
-        .os-selector {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .os-btn {
-            border: 3px solid;
-            padding: 10px 20px;
-            background: none;
-            color: #fff;
-            font-family: inherit;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .android-sys { border-color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
-        .ios-sys { border-color: #00ff00; box-shadow: 0 0 10px #00ff00; color: #00ff00; }
-
-        /* Сетка карточек */
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            max-width: 1200px;
-        }
-
-        .card {
-            border: 4px solid #00ffcc;
-            box-shadow: 5px 5px 0px #005544;
-            background: #000;
-            width: 320px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card h2 {
-            font-size: 14px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .card p {
-            font-size: 9px;
-            line-height: 1.8;
-            color: #fff;
-            margin-bottom: 20px;
+            background-color: #000;
+            background-image: radial-gradient(#111 1px, transparent 1px);
+            background-size: 15px 15px;
+            color: #33ff33; 
+            text-align: center; 
+            padding: 20px; 
             text-transform: uppercase;
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        .download-btn {
-            background-color: #ff00ff;
-            color: #000;
-            padding: 12px;
-            text-decoration: none;
+        h1 { 
+            font-size: 26px; 
+            margin-top: 30px; 
+            color: #ff33ff; 
+            text-shadow: 3px 3px 0 #33ffff; 
+        }
+
+        .subtitle { font-size: 10px; color: #888; margin-bottom: 30px; letter-spacing: 2px; }
+
+        .menu { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        
+        .tab-btn { 
+            font-family: 'Press Start 2P', cursive;
+            padding: 12px 18px; 
+            font-size: 10px; 
+            cursor: pointer; 
+            border: 4px solid #33ff33;
+            background: #000; 
+            color: #33ff33; 
+            transition: 0.2s;
+        }
+        .tab-btn:hover { background: #33ff33; color: #000; }
+        .tab-btn.active { 
+            border-color: #ff33ff; 
+            color: #ff33ff; 
+            box-shadow: 0 0 15px rgba(255, 51, 255, 0.6); 
+        }
+
+        .container { display: none; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 20px; }
+        .container.active { display: flex; }
+
+        .card { 
+            background: #0a0a0a; 
+            border: 4px solid #33ffff; 
+            padding: 20px; 
+            width: 280px; 
+            box-shadow: 6px 6px 0 #33ff33; 
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0 #33ff33; }
+
+        .card h3 { font-size: 14px; margin-top: 0; color: #33ffff; min-height: 40px; }
+        .card p { font-size: 9px; line-height: 1.5; color: #ccc; margin-bottom: 20px; text-align: left; }
+
+        .btn { 
+            font-family: 'Press Start 2P', cursive;
+            display: inline-block; 
+            padding: 12px; 
             font-size: 10px;
-            font-weight: bold;
-            display: block;
-            border: none;
-            box-shadow: 4px 4px 0px #550055;
-            margin-bottom: 15px;
+            background: #ff33ff; 
+            color: #000 !important; 
+            text-decoration: none; 
+            border: 4px solid #000;
+            cursor: pointer;
+            margin-top: auto;
         }
+        
+        .btn:hover { background: #000; color: #ff33ff !important; border-color: #ff33ff; }
 
-        .download-btn:active {
-            box-shadow: none;
-            transform: translate(4px, 4px);
-        }
+        .info { font-size: 8px; color: #666; margin-top: 15px; border-top: 2px solid #222; padding-top: 10px; }
 
-        .file-status {
-            font-size: 8px;
-            color: #666;
-            border-top: 1px solid #222;
-            padding-top: 10px;
-        }
-
-        footer {
-            margin-top: 60px;
-            font-size: 8px;
-            color: #333;
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            z-index: 1000;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>OLD BOX</h1>
-        <div class="status-bar">>>> SYSTEM READY... SELECT OS <<<</div>
-    </header>
+    <div class="crt-overlay"></div>
 
-    <div class="os-selector">
-        <button class="os-btn android-sys">ANDROID.SYS</button>
-        <button class="os-btn ios-sys">IOS.SYS</button>
+    <h1>OLD BOX</h1>
+    <div class="subtitle">>>> SYSTEM READY... SELECT OS <<<</div>
+
+    <div class="menu">
+        <button class="tab-btn active" id="btn-android" onclick="openTab('android')">ANDROID.SYS</button>
+        <button class="tab-btn" id="btn-iphone" onclick="openTab('iphone')">IOS.SYS</button>
     </div>
 
-    <div class="grid">
-        
+    <div id="android" class="container active">
+       
         <div class="card">
-            <div>
-                <h2>MINECRAFT PE 1.0.0</h2>
-                <p>ENDER UPDATE: ДРАКОН КРАЯ И ЭЛИТРЫ. ПОЛНАЯ ВЕРСИЯ ДЛЯ ANDROID!</p>
-            </div>
-            <div>
-                <a href="#" class="download-btn">СКАЧАТЬ APK</a>
-                <div class="file-status">FILE: MC_1.0.0.APK | OK</div>
-            </div>
+            <h3>Telegram X Legacy</h3>
+            <p>Облегченный клиент для старых процессоров. Стабильно на Android 4.1+.</p>
+            <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="btn">СКАЧАТЬ APK</a>
+            <p class="info">FILE: TGX_LEGACY.APK | SYSTEM</p>
         </div>
 
         <div class="card">
-            <div>
-                <h2>OPERA MINI APK</h2>
-                <p>БЫСТРЫЙ ВЕБ-СЕРФИНГ ДЛЯ СЛАБЫХ СИСТЕМ. ЭКОНОМИЯ ТРАФИКА 90%.</p>
-            </div>
-            <div>
-                <a href="#" class="download-btn">СКАЧАТЬ APK</a>
-                <div class="file-status">FILE: OPERA_7.6.4.APK | OK</div>
-            </div>
+            <h3>Opera Mini APK</h3>
+            <p>Быстрый веб-серфинг для слабых систем. Экономия трафика 90%.</p>
+            <a href="https://get.opera.com/ftp/pub/opera/android/mini/7.6.4/operamini.apk" class="btn">СКАЧАТЬ APK</a>
+            <p class="info">FILE: OPERA_7.6.4.APK | OK</p>
         </div>
 
         <div class="card">
-            <div>
-                <h2>TELEGRAM X LEGACY</h2>
-                <p>ОФИЦИАЛЬНЫЙ КЛИЕНТ ДЛЯ СТАРЫХ ПРОЦЕССОРОВ (V7A). ПЛАВНЫЙ И БЫСТРЫЙ.</p>
-            </div>
-            <div>
-                <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="download-btn">СКАЧАТЬ APK</a>
-                <div class="file-status">FILE: TGX_LEGACY.APK | SYSTEM</div>
-            </div>
+            <h3>AIDA64 APK</h3>
+            <p>Диагностика железа. Работает на Android 2.1 и выше.</p>
+            <a href="https://archive.org/download/aida-64-specs-phone-handavare/AIDA64%20v1.36-minAPI7-Eclair.apk" class="btn">СКАЧАТЬ APK</a>
+            <p class="info">FILE: AIDA64_1.36.APK | SYSTEM</p>
         </div>
-
     </div>
 
-    <footer>
-        OLD_BOX_STATION_V1.0 // NEUWIED_DE
-    </footer>
+    <div id="iphone" class="container">
+       
+        <div class="card">
+            <h3>Opera Mini IPA</h3>
+            <p>Легендарный браузер для старых iPhone. Работает на iOS 3.1+.</p>
+            <a href="https://archive.org/download/opera-mini-ios/Opera%20Mini.ipa" class="btn">СКАЧАТЬ IPA</a>
+            <p class="info">FILE: OPERA_7.0.3.IPA | SIDELOAD</p>
+        </div>
+
+        <div class="card">
+            <h3>AIDA64 IPA</h3>
+            <p>Проверка процессора и памяти на старых iOS устройствах.</p>
+            <a href="https://archive.org/download/AIDA64_1.37_ios_8.0/AIDA64_1.37_ios_8.0.ipa" class="btn">СКАЧАТЬ IPA</a>
+            <p class="info">FILE: AIDA_iOS8.IPA | SIDELOAD</p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var containers = document.getElementsByClassName("container");
+            for (var i = 0; i < containers.length; i++) {
+                containers[i].style.display = "none";
+                containers[i].classList.remove("active");
+            }
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].classList.remove("active");
+            }
+            var activeContainer = document.getElementById(tabName);
+            activeContainer.style.display = "flex";
+            activeContainer.classList.add("active");
+            
+            if (tabName === 'android') document.getElementById('btn-android').classList.add('active');
+            if (tabName === 'iphone') document.getElementById('btn-iphone').classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
