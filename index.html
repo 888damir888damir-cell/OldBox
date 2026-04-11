@@ -9,29 +9,45 @@
         body { 
             font-family: 'Press Start 2P', cursive;
             background-color: #000;
+            background-image: radial-gradient(#111 1px, transparent 1px);
+            background-size: 15px 15px;
             color: #33ff33; 
             text-align: center; 
             padding: 20px; 
             text-transform: uppercase;
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        h1 { font-size: 26px; color: #ff33ff; text-shadow: 3px 3px 0 #33ffff; }
-        .subtitle { font-size: 10px; color: #888; margin-bottom: 30px; }
+        h1 { 
+            font-size: 26px; 
+            margin-top: 30px; 
+            color: #ff33ff; 
+            text-shadow: 3px 3px 0 #33ffff; 
+        }
 
-        .menu { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; }
+        .subtitle { font-size: 10px; color: #888; margin-bottom: 30px; letter-spacing: 2px; }
+
+        .menu { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         
         .tab-btn { 
             font-family: 'Press Start 2P', cursive;
             padding: 12px 18px; 
+            font-size: 10px; 
             cursor: pointer; 
             border: 4px solid #33ff33;
             background: #000; 
             color: #33ff33; 
+            transition: 0.2s;
         }
-        .tab-btn.active { border-color: #ff33ff; color: #ff33ff; }
+        .tab-btn:hover { background: #33ff33; color: #000; }
+        .tab-btn.active { 
+            border-color: #ff33ff; 
+            color: #ff33ff; 
+            box-shadow: 0 0 15px rgba(255, 51, 255, 0.6); 
+        }
 
-        /* Важно для работы переключения */
-        .container { display: none; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .container { display: none; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 20px; }
         .container.active { display: flex; }
 
         .card { 
@@ -39,23 +55,47 @@
             border: 4px solid #33ffff; 
             padding: 20px; 
             width: 280px; 
-            box-shadow: 6px 6px 0 #33ff33;
+            box-shadow: 6px 6px 0 #33ff33; 
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
+        
+        .card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0 #33ff33; }
+
+        .card h3 { font-size: 14px; margin-top: 0; color: #33ffff; min-height: 40px; }
+        .card p { font-size: 9px; line-height: 1.5; color: #ccc; margin-bottom: 20px; }
 
         .btn { 
             font-family: 'Press Start 2P', cursive;
             display: inline-block; 
-            padding: 10px; 
+            padding: 12px; 
+            font-size: 10px;
             background: #ff33ff; 
-            color: #000; 
+            color: #000 !important; 
             text-decoration: none; 
-            margin-top: 10px;
+            border: 4px solid #000;
+            cursor: pointer;
         }
+        
+        .btn:hover { background: #000; color: #ff33ff !important; border-color: #ff33ff; }
 
-        .info { font-size: 8px; color: #666; margin-top: 10px; }
+        .info { font-size: 8px; color: #666; margin-top: 15px; border-top: 2px solid #222; padding-top: 10px; }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            z-index: 1000;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+
+    <div class="crt-overlay"></div>
 
     <h1>OLD BOX</h1>
     <div class="subtitle">>>> SYSTEM READY... SELECT OS <<<</div>
@@ -66,12 +106,13 @@
     </div>
 
     <div id="android" class="container active">
-        <div class="card">
-            <h3>Telegram X APK</h3>
-            <p>Легкий клиент для старых систем. Быстрые анимации и экономия ОЗУ.</p>
-            <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="btn">СКАЧАТЬ APK</a>
-            <p class="info">FILE: TG_X_LEGACY.APK | OK</p>
-        </div>
+
+       <div class="card">
+    <h3>Telegram X APK</h3>
+    <p>Быстрый клиент для старых Android. Плавная работа.</p>
+    <a href="https://drive.google.com/uc?export=download&id=1Wu8fR6k84CvmWxALWAJdQofgUSwoH_pC" class="btn">СКАЧАТЬ APK</a>
+    <p class="info">FILE: TG_X_LEGACY.APK | OK</p>
+</div>
 
         <div class="card">
             <h3>Opera Mini APK</h3>
@@ -89,23 +130,24 @@
     </div>
 
     <div id="iphone" class="container">
-        <div class="card">
-            <h3>Telegram X IPA</h3>
-            <p>Альтернативный клиент для iOS. Быстрая работа.</p>
-            <a href="https://drive.google.com/file/d/1Vmay4NtvGcDU5P7WitMzJTyrL2_7wEbN/view?usp=drive_link" class="btn">СКАЧАТЬ IPA</a>
-            <p class="info">FILE: TG_X.IPA | SIDELOAD</p>
-        </div>
 
+<div class="card">
+    <h3>Telegram X IPA</h3>
+    <p>Альтернативный клиент для iOS. Быстрая работа.</p>
+    <a href="https://drive.google.com/uc?export=download&id=1Vmay4NtvGcDU5P7WitMzJTyrL2_7wEbN" class="btn">СКАЧАТЬ IPA</a>
+    <p class="info">FILE: TG_X.IPA | SIDELOAD</p>
+</div>
+       
         <div class="card">
             <h3>Opera Mini IPA</h3>
-            <p>Браузер для старых iPhone. Работает на iOS 3.1+.</p>
-            <a href="https://archive.org/download/opera-mini-ios/Opera%20Mini.ipa" class="btn">СКАЧАТЬ IPA</a>
+            <p>Легендарный браузер для старых iPhone. Работает на iOS 3.1+.</p>
+            <a href="https://get.opera.com/ftp/pub/opera/android/mini/7.6.4/operamini.apk" class="btn">СКАЧАТЬ IPA</a>
             <p class="info">FILE: OPERA_7.0.3.IPA | SIDELOAD</p>
         </div>
 
         <div class="card">
             <h3>AIDA64 IPA</h3>
-            <p>Проверка железа на iOS устройствах.</p>
+            <p>Проверка процессора и памяти на старых iOS устройствах.</p>
             <a href="https://archive.org/download/AIDA64_1.37_ios_8.0/AIDA64_1.37_ios_8.0.ipa" class="btn">СКАЧАТЬ IPA</a>
             <p class="info">FILE: AIDA_iOS8.IPA | SIDELOAD</p>
         </div>
@@ -113,31 +155,23 @@
 
     <script>
         function openTab(tabName) {
-            // Скрываем все блоки
             var containers = document.getElementsByClassName("container");
             for (var i = 0; i < containers.length; i++) {
                 containers[i].style.display = "none";
                 containers[i].classList.remove("active");
             }
-            
-            // Убираем активный цвет у кнопок
             var buttons = document.getElementsByClassName("tab-btn");
             for (var j = 0; j < buttons.length; j++) {
                 buttons[j].classList.remove("active");
             }
+            var activeContainer = document.getElementById(tabName);
+            activeContainer.style.display = "flex";
+            activeContainer.classList.add("active");
             
-            // Показываем нужный блок
-            var activeSection = document.getElementById(tabName);
-            activeSection.style.display = "flex";
-            activeSection.classList.add("active");
-            
-            // Подсвечиваем кнопку
-            if (tabName === 'android') {
-                document.getElementById('btn-android').classList.add('active');
-            } else {
-                document.getElementById('btn-iphone').classList.add('active');
-            }
+            if (tabName === 'android') document.getElementById('btn-android').classList.add('active');
+            if (tabName === 'iphone') document.getElementById('btn-iphone').classList.add('active');
         }
     </script>
+
 </body>
 </html>
