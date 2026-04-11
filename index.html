@@ -3,161 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👾 OLD BOX - Retro Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>OLD BOX - Retro Store</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/alien.png" type="image/png">
     <style>
-        body { 
-            font-family: 'Press Start 2P', cursive;
-            background-color: #000;
-            background-image: radial-gradient(#111 1px, transparent 1px);
-            background-size: 15px 15px;
-            color: #33ff33; 
-            text-align: center; 
-            padding: 20px; 
-            text-transform: uppercase;
+        body {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            overflow-x: hidden;
-        }
-
-        h1 { 
-            font-size: 26px; 
-            margin-top: 30px; 
-            color: #ff33ff; 
-            text-shadow: 3px 3px 0 #33ffff; 
-        }
-
-        .subtitle { font-size: 10px; color: #888; margin-bottom: 30px; letter-spacing: 2px; }
-
-        .menu { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        
-        .tab-btn { 
-            font-family: 'Press Start 2P', cursive;
-            padding: 12px 18px; 
-            font-size: 10px; 
-            cursor: pointer; 
-            border: 4px solid #33ff33;
-            background: #000; 
-            color: #33ff33; 
-            transition: 0.2s;
-        }
-        .tab-btn:hover { background: #33ff33; color: #000; }
-        .tab-btn.active { 
-            border-color: #ff33ff; 
-            color: #ff33ff; 
-            box-shadow: 0 0 15px rgba(255, 51, 255, 0.6); 
-        }
-
-        .container { display: none; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 20px; }
-        .container.active { display: flex; }
-
-        .card { 
-            background: #0a0a0a; 
-            border: 4px solid #33ffff; 
-            padding: 20px; 
-            width: 280px; 
-            box-shadow: 6px 6px 0 #33ff33; 
-            transition: 0.3s;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
-        
-        .card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0 #33ff33; }
 
-        .card h3 { font-size: 14px; margin-top: 0; color: #33ffff; min-height: 40px; }
-        .card p { font-size: 9px; line-height: 1.5; color: #ccc; margin-bottom: 20px; }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #6a0dad;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
 
-        .btn { 
-            font-family: 'Press Start 2P', cursive;
-            display: inline-block; 
-            padding: 12px; 
+        h1 {
+            color: #9d4edd;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #000;
+        }
+
+        .subtitle {
+            color: #5a5a5a;
+            font-size: 0.9em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Стиль карточки приложения */
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #9d4edd;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .icon-box {
+            font-size: 40px;
+            margin-right: 15px;
+        }
+
+        .app-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0088cc; /* Цвет Telegram */
+        }
+
+        .version-tag {
+            font-size: 0.8em;
+            color: #666;
+            background: #252525;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .description {
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin: 15px 0;
+            color: #bbb;
+        }
+
+        .specs {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+
+        .specs li::before {
+            content: "• ";
+            color: #9d4edd;
+        }
+
+        .download-btn {
+            display: block;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #00aaff;
+        }
+
+        .file-name {
             font-size: 10px;
-            background: #ff33ff; 
-            color: #000 !important; 
-            text-decoration: none; 
-            border: 4px solid #000;
-            cursor: pointer;
+            color: #444;
+            margin-top: 10px;
+            text-align: center;
+            word-break: break-all;
         }
-        
-        .btn:hover { background: #000; color: #ff33ff !important; border-color: #ff33ff; }
 
-        .info { font-size: 8px; color: #666; margin-top: 15px; border-top: 2px solid #222; padding-top: 10px; }
-
-        .crt-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-            background-size: 100% 4px;
-            z-index: 1000;
-            pointer-events: none;
+        footer {
+            margin-top: 50px;
+            color: #444;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
 
-    <div class="crt-overlay"></div>
+    <header>
+        <h1>OLD BOX</h1>
+        <div class="subtitle">RETRO STORE & SOFTWARE ARCHIVE</div>
+    </header>
 
-    <h1>OLD BOX</h1>
-    <div class="subtitle">>>> SYSTEM READY... SELECT OS <<<</div>
-
-    <div class="menu">
-        <button class="tab-btn active" id="btn-android" onclick="openTab('android')">ANDROID.SYS</button>
-        <button class="tab-btn" id="btn-iphone" onclick="openTab('iphone')">IOS.SYS</button>
-    </div>
-
-    <div id="android" class="container active">
-
-        <div class="card">
-            <h3>Opera Mini APK</h3>
-            <p>Быстрый веб-серфинг для слабых систем. Экономия трафика 90%.</p>
-            <a href="https://get.opera.com/ftp/pub/opera/android/mini/7.6.4/operamini.apk" class="btn">СКАЧАТЬ APK</a>
-            <p class="info">FILE: OPERA_7.6.4.APK | OK</p>
-        </div>
-
-        <div class="card">
-            <h3>AIDA64 APK</h3>
-            <p>Диагностика железа. Работает на Android 2.1 и выше.</p>
-            <a href="https://archive.org/download/aida-64-specs-phone-handavare/AIDA64%20v1.36-minAPI7-Eclair.apk" class="btn">СКАЧАТЬ APK</a>
-            <p class="info">FILE: AIDA64_1.36.APK | SYSTEM</p>
-        </div>
-    </div>
-
-    <div id="iphone" class="container">
+    <div class="container">
         
         <div class="card">
-            <h3>Opera Mini IPA</h3>
-            <p>Легендарный браузер для старых iPhone. Работает на iOS 3.1+.</p>
-            <a href="https://archive.org/download/ipa-collection/Opera Mini 7.0.5.45389.ipa" class="btn">СКАЧАТЬ IPA</a>
-            <p class="info">FILE: OPERA_7.0.5.IPA | SIDELOAD</p>
+            <div>
+                <div class="card-header">
+                    <div class="icon-box">✈️</div>
+                    <div>
+                        <div class="app-title">Telegram X Legacy</div>
+                        <div class="version-tag">0.28.3.1785 (Stable)</div>
+                    </div>
+                </div>
+                <p class="description">Альтернативный клиент, работающий на движке TDLib. Гораздо быстрее и плавнее обычного приложения на старых устройствах.</p>
+                <ul class="specs">
+                    <li>Система: Android 4.1+</li>
+                    <li>Архитектура: armeabi-v7a</li>
+                    <li>Особенности: Экономия ОЗУ</li>
+                </ul>
+            </div>
+            <div>
+                <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="download-btn">СКАЧАТЬ APK (34MB)</a>
+                <div class="file-name">org.thunderdog.challegram_v7a.apk</div>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>AIDA64 IPA</h3>
-            <p>Проверка процессора и памяти на старых iOS устройствах.</p>
-            <a href="https://archive.org/download/AIDA64_1.37_ios_8.0/AIDA64_1.37_ios_8.0.ipa" class="btn">СКАЧАТЬ IPA</a>
-            <p class="info">FILE: AIDA_iOS8.IPA | SIDELOAD</p>
+        <div class="card" style="opacity: 0.6;">
+            <div>
+                <div class="card-header">
+                    <div class="icon-box">🌐</div>
+                    <div>
+                        <div class="app-title" style="color: #ff4500;">Opera Mini</div>
+                        <div class="version-tag">Classic Edition</div>
+                    </div>
+                </div>
+                <p class="description">Лучший браузер для очень слабого интернета и старых телефонов. Сжимает данные до 90%.</p>
+            </div>
+            <div>
+                <a href="#" class="download-btn" style="background: #444;">СКОРО</a>
+            </div>
         </div>
+
     </div>
 
-    <script>
-        function openTab(tabName) {
-            var containers = document.getElementsByClassName("container");
-            for (var i = 0; i < containers.length; i++) {
-                containers[i].style.display = "none";
-                containers[i].classList.remove("active");
-            }
-            var buttons = document.getElementsByClassName("tab-btn");
-            for (var j = 0; j < buttons.length; j++) {
-                buttons[j].classList.remove("active");
-            }
-            var activeContainer = document.getElementById(tabName);
-            activeContainer.style.display = "flex";
-            activeContainer.classList.add("active");
-            
-            if (tabName === 'android') document.getElementById('btn-android').classList.add('active');
-            if (tabName === 'iphone') document.getElementById('btn-iphone').classList.add('active');
-        }
-    </script>
+    <footer>
+        &copy; 2026 OLD BOX Project | Neuwied, Germany
+    </footer>
 
 </body>
 </html>
