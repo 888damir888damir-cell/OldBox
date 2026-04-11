@@ -7,138 +7,107 @@
     <link rel="icon" href="https://img.icons8.com/color/48/alien.png" type="image/png">
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #6a0dad;
-            padding-bottom: 20px;
-            width: 100%;
-            max-width: 800px;
+            margin-bottom: 30px;
         }
 
         h1 {
-            color: #9d4edd;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+            font-size: 3em;
             margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px #000;
-        }
-
-        .subtitle {
-            color: #5a5a5a;
-            font-size: 0.9em;
+            letter-spacing: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #bc13fe, 0 0 20px #bc13fe;
         }
 
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
-            width: 100%;
             max-width: 1000px;
         }
 
-        /* Стиль карточки приложения */
+        /* Общий стиль карточек с неоновой рамкой как на скрине */
         .card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
+            background-color: #000000;
+            width: 300px;
             padding: 20px;
-            transition: transform 0.3s, border-color 0.3s;
+            border-radius: 5px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #9d4edd;
+        /* Фиолетовая карточка (Telegram X) */
+        .card.purple {
+            border: 3px solid #bc13fe;
+            box-shadow: inset 0 0 10px #bc13fe, 0 0 15px #bc13fe;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
+        /* Зеленая карточка (Opera Mini или другое) */
+        .card.green {
+            border: 3px solid #4ade80;
+            box-shadow: inset 0 0 10px #4ade80, 0 0 15px #4ade80;
+        }
+
+        .app-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 0.9em;
+            color: #cccccc;
             margin-bottom: 15px;
         }
 
-        .icon-box {
-            font-size: 40px;
-            margin-right: 15px;
-        }
-
-        .app-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #0088cc; /* Цвет Telegram */
-        }
-
-        .version-tag {
-            font-size: 0.8em;
-            color: #666;
-            background: #252525;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 5px;
-            display: inline-block;
-        }
-
-        .description {
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin: 15px 0;
-            color: #bbb;
-        }
-
-        .specs {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-            font-size: 0.85em;
-        }
-
-        .specs li::before {
-            content: "• ";
-            color: #9d4edd;
-        }
-
-        .download-btn {
+        .btn {
             display: block;
-            background: #0088cc;
-            color: white;
+            padding: 10px;
             text-decoration: none;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
             font-weight: bold;
-            transition: background 0.2s;
+            border-radius: 3px;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .download-btn:hover {
-            background: #00aaff;
+        .purple .btn {
+            background-color: #bc13fe;
+            color: #fff;
         }
 
-        .file-name {
-            font-size: 10px;
-            color: #444;
+        .green .btn {
+            background-color: #4ade80;
+            color: #000;
+        }
+
+        .btn:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .file-info {
             margin-top: 10px;
-            text-align: center;
-            word-break: break-all;
-        }
-
-        footer {
-            margin-top: 50px;
-            color: #444;
-            font-size: 0.8em;
+            font-size: 0.7em;
+            color: #555;
+            font-family: monospace;
         }
     </style>
 </head>
@@ -146,54 +115,16 @@
 
     <header>
         <h1>OLD BOX</h1>
-        <div class="subtitle">RETRO STORE & SOFTWARE ARCHIVE</div>
     </header>
 
     <div class="container">
         
-        <div class="card">
+        <div class="card purple">
             <div>
-                <div class="card-header">
-                    <div class="icon-box">✈️</div>
-                    <div>
-                        <div class="app-title">Telegram X Legacy</div>
-                        <div class="version-tag">0.28.3.1785 (Stable)</div>
-                    </div>
-                </div>
-                <p class="description">Альтернативный клиент, работающий на движке TDLib. Гораздо быстрее и плавнее обычного приложения на старых устройствах.</p>
-                <ul class="specs">
-                    <li>Система: Android 4.1+</li>
-                    <li>Архитектура: armeabi-v7a</li>
-                    <li>Особенности: Экономия ОЗУ</li>
-                </ul>
+                <div class="app-icon">✈️</div>
+                <h2>TELEGRAM X</h2>
+                <p>ЛЕГКИЙ КЛИЕНТ ДЛЯ СТАРЫХ СИСТЕМ. БЫСТРЫЕ АНИМАЦИИ И ЭКОНОМИЯ ОЗУ.</p>
             </div>
             <div>
-                <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="download-btn">СКАЧАТЬ APK (34MB)</a>
-                <div class="file-name">org.thunderdog.challegram_v7a.apk</div>
-            </div>
-        </div>
-
-        <div class="card" style="opacity: 0.6;">
-            <div>
-                <div class="card-header">
-                    <div class="icon-box">🌐</div>
-                    <div>
-                        <div class="app-title" style="color: #ff4500;">Opera Mini</div>
-                        <div class="version-tag">Classic Edition</div>
-                    </div>
-                </div>
-                <p class="description">Лучший браузер для очень слабого интернета и старых телефонов. Сжимает данные до 90%.</p>
-            </div>
-            <div>
-                <a href="#" class="download-btn" style="background: #444;">СКОРО</a>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        &copy; 2026 OLD BOX Project | Neuwied, Germany
-    </footer>
-
-</body>
-</html>
+                <a href="https://github.com/TGX-Android/Telegram-X/releases/download/v0.28.3.1785/Telegram.X.0.28.3.1785-legacy.apk" class="btn">СКАЧАТЬ APK</a>
+                <div class="file-info">VER: 0.28.3
